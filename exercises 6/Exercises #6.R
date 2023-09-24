@@ -1,3 +1,4 @@
+install.packages("palmerpenguins")
 
 # load packages
 library(tidyverse)
@@ -11,8 +12,11 @@ ggplot2::theme_set(ggplot2::theme_minimal())
 
 # (From https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)
 
+?penguins
+View(penguins)
+
 # SELECTING SOME OBSERVATIONS
-penguins %>% filter(species == "Adelie")
+a <- penguins %>% filter(species == "Adelie")
 
 
 # REORDERING ROWS
@@ -72,12 +76,16 @@ penguins %>% group_by(island) %>% summarize(m=mean(bill_length_mm, na.rm=TRUE),
 
 # study penguin body mass
 
-# describe the distribution, visually and quantiatively 
+# describe the distribution, visually and quantitatively 
 
+# penguin body mass is quantitative variable, more specifically an integer
 
+hist(penguins$body_mass_g)
+ # can be described using min, max, median, mean, mode, IQR, and SD
+summary(penguins$body_mass_g)
+sd(penguins$body_mass_g, na.rm=TRUE)
+IQR(penguins$body_mass_g, na.rm=TRUE)
 
-
-
-
-
+ggplot(data=penguins, aes(x=body_mass_g)) + geom_histogram() + facet_wrap(vars(species))
+penguins%>%ggplot(aes(x=body_mass_g, fill=species)) + geom_histogram()
 

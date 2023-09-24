@@ -49,5 +49,9 @@ penguins %>% filter(species == "Adelie") %>% summarise(
   flipperlength_iqr = IQR(flipper_length_mm)
 )
 
+# comparing quantitative var (flipper length) with categorical var (species), with fill
+ggplot(data=penguins, aes(x=flipper_length_mm)) + geom_histogram()
+
+
 
 
